@@ -1,5 +1,5 @@
-import connectDB from '../backend/src/lib/db.js';
-import app from '../backend/src/app.js';
+import connectDB from '../src/lib/db.js';
+import app from '../src/app.js';
 
 app.use(async (req, res, next) => {
     try {
