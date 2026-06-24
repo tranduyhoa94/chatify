@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/user.model.js';
-import { generateToken } from '../lib/utils.js';
+import { generateToken, clearAuthCookie } from '../lib/utils.js';
 
 export const signup = async (req, res) => {
     try {
@@ -52,7 +52,7 @@ export const login = async (req, res) => {
 
 export const logout = async (_, res) => {
     try {
-        res.cookie('jwt', '', { httpOnly: true, expires: new Date(0) });
+        clearAuthCookie(res);
         res.status(200).json({ message: 'Logged out successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
